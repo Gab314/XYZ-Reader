@@ -139,7 +139,7 @@ public class ArticleDetailFragment extends Fragment implements
                 startActivity(intent);
             }
         });
-        bindViews();
+        //bindViews();
         return mRootView;
     }
 
