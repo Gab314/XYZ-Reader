@@ -8,6 +8,8 @@ import android.content.IntentFilter;
 import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.RecyclerView;
@@ -42,9 +44,11 @@ public class ArticleListActivity extends ActionBarActivity implements
         LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final String TAG = ArticleListActivity.class.toString();
-    private Toolbar mToolbar;
+
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private RecyclerView mRecyclerView;
+    private Snackbar snackbar;
+    private AppBarLayout toolbarContainerView;
 
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.sss");
     // Use default locale format
@@ -57,11 +61,9 @@ public class ArticleListActivity extends ActionBarActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_article_list);
 
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
-
-        final View toolbarContainerView = findViewById(R.id.toolbar_container);
-
+         toolbarContainerView = (AppBarLayout)findViewById(R.id.toolbar_container);
+         snackbar = Snackbar.make(toolbarContainerView, "XYZ reader updated.", Snackbar.LENGTH_SHORT);
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
@@ -102,6 +104,9 @@ public class ArticleListActivity extends ActionBarActivity implements
     };
 
     private void updateRefreshingUI() {
+        if(mIsRefreshing == false){
+            snackbar.show();
+        }
         mSwipeRefreshLayout.setRefreshing(mIsRefreshing);
     }
 
