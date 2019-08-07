@@ -1,13 +1,12 @@
 # XYZ-Reader
 
-Popular Movies is an Android app that lists the popular movies and highest rated movies of today.
-This is part of the Android Nanodegree by Udacity. Data is retrieved from themoviedb.org.
+XYZ-Reader is an Android app that provides Material Design to a reading app.
+This is part of the Android Nanodegree by Udacity. 
 
 
 Contains:
-* SQlite database.
-* JSON parsing.
-* RecyclerView.
+* Floating Button.
+* Adaptable Bars.
 
 <p align="center">
   <img src="./XYZReader_Img/XYZ_Img1.png" alt="Size Limit CLI" width="260">
